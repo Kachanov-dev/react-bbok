@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import {TodoList} from './components/TodoList';
+const date1 = new Date(2023, 1, 26, 11, 30);
+const date2 = new Date(2023, 2, 14, 5, 20);
 
-function App() {
+const todoListData = [
+  {
+    title: 'Начать читать кингу',
+    desc: 'Стремление',
+    image: '',
+    done: true,
+    createdAt: date1,
+    Key: date1.getTime(),
+  },
+  {
+    title: 'Не бросать читать книгу',
+    desc: 'Сила воли',
+    image: '',
+    done: false,
+    createdAt: date2,
+    Key: date2.getTime(),
+  },
+];
+
+const App = () => {
+  const setDone = (id) => {
+    console.log('test-id:', id);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <>
+      <nav className="navbar is-light">
+        <div className="navbar-brand">
+          <div className="navbar-item is-uppercase">Kachanov.dev</div>
+        </div>
+      </nav>
 
-export default App;
+      <main className="content px-6 mt-6">
+        <TodoList todoListData={todoListData} setDone={setDone} />
+      </main>
+    </>
+  );
+};
+
+export {App};
